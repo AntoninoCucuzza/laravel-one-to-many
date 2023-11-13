@@ -27,6 +27,15 @@
         <h4>online link: <a href="{{ $project->project_link }}">{{ $project->project_link }}</a></h4>
         <h4>github link: <a href="{{ $project->github_link }}">{{ $project->github_link }}</a></h4>
 
+        <h4>Type:
+            @if ($project->type)
+                {{ $project->type->name ? $project->type->name : 'Uncategorized' }}
+            @else
+                Uncategorized
+            @endif
+        </h4>
+
+
         <div class="row mt-4">
 
             <div class="col-6">

@@ -51,6 +51,22 @@
                     @endif
                 </div>
 
+
+                <div class="mb-3">
+                    <label for="type_id" class="form-label">Categories</label>
+                    <select class="form-select @error('type_id') is-invalid  @enderror" name="type_id" id="type_id">
+                        <option selected disabled>Select a category</option>
+                        <option value="">Uncategorized</option>
+
+                        @forelse ($types as $type)
+                            <option value="{{ $type->id }}" {{ $type->id == old($type->id) ? selected : '' }}
+                                class="form-select @error('type_id') is-invalid @enderror">
+                                {{ $type->name }}</option>
+                        @empty
+                        @endforelse
+                    </select>
+                </div>
+
                 <div class="col-12 mt-4">
                     <label for="thumb" class="form-label text-white ">thumb</label>
                     <input class="form-control @error('thumb') is-invalid @enderror" name="thumb" type="file">
